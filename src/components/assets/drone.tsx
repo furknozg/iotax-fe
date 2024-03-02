@@ -5,19 +5,22 @@ import { AnimationMixer, Mesh, AnimationUtils, Vector3, CatmullRomCurve3 } from 
 
 
 
-
+const points = [
+    new Vector3(-7.5, 0, -7.5),
+    new Vector3(-7.5, 0, 7.5),
+    new Vector3(7.5, 0, 7.5),
+    new Vector3(7.5, 0, -7.5),
+]
+export function getMotionPoints(idx: number) {
+    return points[idx % points.length];
+}
 
 export function Drone({ scale, position, droneRef, indexRef }: any) {
     const [pointsIndex, setPointsIndex] = useState(0);
 
+    points.forEach((point: Vector3) => point.setY = position.y)
 
 
-    const points = [
-        new Vector3(-7.5, position.y, -7.5),
-        new Vector3(-7.5, position.y, 7.5),
-        new Vector3(7.5, position.y, 7.5),
-        new Vector3(7.5, position.y, -7.5),
-    ]
 
 
     const ref = useRef<ThreeElements['primitive']>();

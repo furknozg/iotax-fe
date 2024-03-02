@@ -7,7 +7,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { DirectionalLightHelper, PerspectiveCamera, Vector3 } from 'three'
 import { Scene } from './components/assets/scene'
 import { OrbitControls, useHelper, Text } from '@react-three/drei'
-import { Drone } from './components/assets/drone'
+import { Drone, getMotionPoints } from './components/assets/drone'
 import { OverLayItem, TextDescription } from './components/ui/textComp'
 
 interface camProps {
@@ -129,6 +129,8 @@ function App() {
               // set anim state here (migrate the state to this scope)
 
               droneCompRef.current.props.indexRef.current = 1;
+              const motionPoint = getMotionPoints(droneCompRef.current.props.indexRef.current);
+              droneRef.current?.current.lookAt(motionPoint.x, motionPoint.y, motionPoint.z);
 
             }}
 
@@ -149,6 +151,8 @@ function App() {
               // set anim state here (migrate the state to this scope)
 
               droneCompRef.current.props.indexRef.current = 2;
+              const motionPoint = getMotionPoints(droneCompRef.current.props.indexRef.current);
+              droneRef.current?.current.lookAt(motionPoint.x, motionPoint.y, motionPoint.z);
 
             }} />
 
@@ -165,6 +169,8 @@ function App() {
               // set anim state here (migrate the state to this scope)
 
               droneCompRef.current.props.indexRef.current = 3;
+              const motionPoint = getMotionPoints(droneCompRef.current.props.indexRef.current);
+              droneRef.current?.current.lookAt(motionPoint.x, motionPoint.y, motionPoint.z);
 
             }} />
 
@@ -188,6 +194,8 @@ function App() {
               // set anim state here (migrate the state to this scope)
 
               droneCompRef.current.props.indexRef.current = 4;
+              const motionPoint = getMotionPoints(droneCompRef.current.props.indexRef.current);
+              droneRef.current?.current.lookAt(motionPoint.x, motionPoint.y, motionPoint.z);
 
             }} />
         </group>
