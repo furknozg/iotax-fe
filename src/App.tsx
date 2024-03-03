@@ -4,11 +4,10 @@ import './App.css'
 
 
 import { Canvas, useFrame } from '@react-three/fiber'
-import { DirectionalLightHelper, PerspectiveCamera, Vector3 } from 'three'
+import { PerspectiveCamera, Vector3 } from 'three'
 import { Scene } from './components/assets/scene'
-import { OrbitControls, useHelper, Text } from '@react-three/drei'
 import { Drone, getMotionPoints } from './components/assets/drone'
-import { OverLayItem, TextDescription } from './components/ui/textComp'
+import { TextDescription } from './components/ui/textComp'
 
 interface camProps {
   position: Vector3,
@@ -60,9 +59,6 @@ const droneProps: modelProps = {
 export function getCameraPosition() {
   return cameraProps.position
 }
-function setCameraPosition(position: Vector3) {
-  cameraProps.position = position;
-}
 
 
 
@@ -70,7 +66,7 @@ function App() {
   const cameraRef: any = useRef(new PerspectiveCamera(cameraProps.fov, cameraProps.aspect, cameraProps.near, cameraProps.far));
 
 
-  const [pointsIndex, setPointsIndex] = useState(0);
+  const [pointsIndex, _] = useState(0);
   const pointRef = useRef(pointsIndex);
 
   const droneRef: any = useRef(null);
@@ -86,7 +82,7 @@ function App() {
 
     // useHelper(spotLightRef, DirectionalLightHelper, 0.5)
 
-    useFrame((state, delta) => {
+    useFrame(() => {
       if (cameraRef.current != undefined) {
         cameraRef.current.lookAt(droneRef.current.current.position);
       }

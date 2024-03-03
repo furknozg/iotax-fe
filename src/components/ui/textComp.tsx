@@ -1,15 +1,9 @@
-import { Html, useGLTF, Text } from "@react-three/drei";
+import { Html, Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import React, { useRef } from "react";
 
 
-interface OverLayProps {
-    className: string,
-    title: string,
-    description: string,
-    bgColor: string,
 
-}
 
 
 export function OverLayItem({ className, title, description, bgColor, ...props }: any) {
@@ -35,7 +29,7 @@ export function OverLayItem({ className, title, description, bgColor, ...props }
 export function TextDescription({ position, title, description, color, onClick, cameraRef, scale, clickable = false }: any) {
     const textFieldRef: React.LegacyRef<any> = useRef(null);
 
-    useFrame((state, delta) => {
+    useFrame(() => {
         if (textFieldRef != undefined && cameraRef != undefined) {
             textFieldRef.current.lookAt(cameraRef.current.position);
         }
@@ -50,14 +44,14 @@ export function TextDescription({ position, title, description, color, onClick, 
                 }
             }
             }
-            onPointerEnter={(e) => {
+            onPointerEnter={() => {
                 if (clickable) {
                     //console.log(e)
                     textFieldRef.current.color = "white";
                 }
 
             }}
-            onPointerLeave={(e) => {
+            onPointerLeave={() => {
                 if (clickable) {
                     //console.log(e)
                     textFieldRef.current.color = "black";

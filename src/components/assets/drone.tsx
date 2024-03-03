@@ -1,6 +1,6 @@
 import { useGLTF } from "@react-three/drei";
 import { ThreeElements, useFrame } from "@react-three/fiber";
-import { createRef, useRef, useState } from "react";
+import { useRef } from "react";
 import { AnimationMixer, Mesh, AnimationUtils, Vector3, CatmullRomCurve3 } from "three";
 
 
@@ -16,7 +16,7 @@ export function getMotionPoints(idx: number) {
 }
 
 export function Drone({ scale, position, droneRef, indexRef }: any) {
-    const [pointsIndex, setPointsIndex] = useState(0);
+    //const [pointsIndex, setPointsIndex] = useState(0);
 
     points.forEach((point: Vector3) => point.setY = position.y)
 
@@ -28,7 +28,7 @@ export function Drone({ scale, position, droneRef, indexRef }: any) {
 
 
 
-    const drone = useGLTF("./src/assets/drone_ds.glb");
+    const drone = useGLTF("assets/drone_ds.glb");
     const animations = drone.animations;
     //console.log(animations);
 

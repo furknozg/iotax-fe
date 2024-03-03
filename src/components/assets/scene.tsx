@@ -4,7 +4,7 @@ import { Mesh } from 'three';
 
 export function Scene() {
 
-    const scene = useGLTF("./src/assets/iotax_scene.glb");
+    const scene = useGLTF("assets/iotax_scene.glb");
 
     scene.scene.traverse((object) => {
         if (object instanceof Mesh) {
