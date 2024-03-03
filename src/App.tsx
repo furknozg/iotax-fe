@@ -194,7 +194,7 @@ function App() {
               // set anim state here (migrate the state to this scope)
 
               droneCompRef.current.props.indexRef.current = 4;
-              const motionPoint = getMotionPoints(droneCompRef.current.props.indexRef.current);
+              const motionPoint = getMotionPoints(droneCompRef.current.props.indexRef.current); // although this is a buggy mess with the current ui it works
               droneRef.current?.current.lookAt(motionPoint.x, motionPoint.y, motionPoint.z);
 
             }} />
